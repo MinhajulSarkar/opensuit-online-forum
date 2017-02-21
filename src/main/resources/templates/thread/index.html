@@ -84,28 +84,16 @@
 <script th:inline="javascript">
 $( document ).ready(function() {
 	
-	var baseUrl="/online/forum";
-	
-	/*###############################################
-	 *############  For Load all data from server ###
-	 *###############################################*/
-	 load(baseUrl+"/all");
-	
-	
-	 /*###############################################
-	  *##### For Load all autocomplete from server ###
-	  *###############################################*/
-	 
-	 
-	
-	 /*###############################################
-	  *########## For Searching data on header box ###
-	  *###############################################*/
-	var oTable =$('#customerDataTable').DataTable();
-	$('#myInputTextField').keyup(function(){
-	      oTable.search($(this).val()).draw() ;
-	})
-	
+		var baseUrl="/online/forum";
+		/*###############################################
+		 *############  For Load all data from server ###
+		 *###############################################*/
+		load(baseUrl+"/all");
+		
+		var oTable =$('#customerDataTable').DataTable();
+		$('#myInputTextField').keyup(function(){
+		      oTable.search($(this).val()).draw() ;
+		})
 	
 	 /*###############################################
 	  *########## Save button click event          ###
@@ -165,10 +153,6 @@ $( document ).ready(function() {
 
 		});
 
-	 /*###############################################
-	  *######### DataTable click event End ###########
-	  *###############################################*/
-		  
 	/*##### All Functions ######*/	  
 	function load(param) {
 			$("#tblcustomerlist").html("");
@@ -218,7 +202,6 @@ $( document ).ready(function() {
 					responsive : true
 	           });
 		}
-	
 		
 		$('#customerDataTable tbody').on( 'click', 'button', function () {
 			var table = $('#customerDataTable').DataTable();
@@ -230,9 +213,6 @@ $( document ).ready(function() {
 		        $("#myModalHorizontal").modal();
 	    } );
 		
-		
-		
-
 	});
 </script>
 

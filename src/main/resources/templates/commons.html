@@ -3,15 +3,12 @@
 		<link rel="stylesheet" href="../../vendors/css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="../../css/opensuite-navbar.css" />
 		<link rel="stylesheet" href="../../vendors/css/sweetalert-1.0.1.css"/>
-		
 		<link rel="stylesheet" href="../../vendors/css/jquery.dataTables.min.css"/>
 		<link rel="stylesheet" href="../../vendors/css/rowReorder.dataTables.min.css"/>
 		<link rel="stylesheet" href="../../vendors/css/responsive.dataTables.min.css"/>
-		
 		<link rel="stylesheet" href="../../vendors/css/font-awesome.min.css"/>
 		<link rel="stylesheet" href="../../vendors/css/jquery-ui.css"/>
 		<link rel="stylesheet" type="text/css" />
-		
 		<!-- for Jqurey Validation Engine -->
 	<link href="../../vendors/css/validationEngine.jquery.css" rel="stylesheet" type="text/css" />
 	
@@ -20,19 +17,15 @@
 	<span th:remove="tag" th:fragment="common-js" xmlns:th="http://www.thymeleaf.org">
 		<script src="../../vendors/js/jquery.min.js"></script>
 	  	<script src="../../vendors/js/bootstrap.min.js"></script>
-	  	
 	 	<script type="text/javascript" src="../../vendors/js/jquery.dataTables.js"></script>
 	 	<script type="text/javascript" src="../../vendors/js/dataTables.rowReorder.min.js"></script>
 	 	<script type="text/javascript" src="../../vendors/js/dataTables.responsive.min.js"></script>
 	 	<script type="text/javascript" src="../../js/commons.js"></script>
 	 	<script src="../../vendors/js/sweetalert-1.0.1.js"></script>
-	 	
 	 	<!-- for Jqurey Validation Engine -->
 	<script src="../../vendors/js/jquery.validationEngine.js"></script>
 	<script src="../../vendors/js/jquery.validationEngine-en.js"></script>
-	
 	<script src="../../vendors/js/jquery-ui.js"></script>
-	
 	</span>
 
 	<div th:remove="tag" th:fragment="common-html">
@@ -51,9 +44,7 @@
 		</div>
 	</div>
 	
-	
 	<!-- Header fragment -->
-	
 	<div th:remove="tag" th:fragment="common-header-event">
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -64,13 +55,9 @@
 		        <li class="dropdown">
 		          <a href="/online/forum/registration">Registration</a>
 		        </li>
-		        
-		        
 		        <li class="dropdown" th:if="${#httpServletRequest.remoteUser} ==null">
 		          <a href="/online/forum/login">Login</a>
 		        </li>
-		        
-		       
 		        <li class="dropdown" th:if="${#httpServletRequest.remoteUser} !=null">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span th:if="${#httpServletRequest.remoteUser} !=null"><span th:text="${#httpServletRequest.remoteUser}"></span></span><span class="caret"></span></a>
 		          <ul class="dropdown-menu">
@@ -84,7 +71,7 @@
 		        </div>
 		      </form>
 		    </div><!-- /.navbar-collapse -->
-	</div>
+		</div>
 	
 	
 </div>

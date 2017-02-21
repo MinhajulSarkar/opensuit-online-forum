@@ -10,72 +10,60 @@
 <body>
 <!-- ################## Header Start ############## -->
 <nav class="navbar navbar-default navbar1-inner">
-		  <div class="container-fluid">
-		    <!-- Brand and toggle get grouped for better mobile display -->
-			    <div class="navbar-header">
-				      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-				        <span class="sr-only">Toggle navigation</span>
-				        <span class="icon-bar"></span>
-				        <span class="icon-bar"></span>
-				        <span class="icon-bar"></span>
-				      </button>
-				      <span class="brand" th:text="#{forum.tile.level}"></span>
-			    </div>
-			<span th:substituteby="commons :: common-header-event"></span>
-		</div><!-- /.container-fluid -->
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <span class="brand" th:text="#{forum.tile.level}"></span>
+        </div>
+        <span th:substituteby="commons :: common-header-event"></span>
+    </div>
+    <!-- /.container-fluid -->
 </nav>
 <!-- ################## Header End ############## -->
 	
 		
 <!-- ##################Content Body############## -->
 <div class="container">
-<!-- Modal -->
-<div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <button type="button" class="close" 
-                   data-dismiss="modal">
-                       <span aria-hidden="true">&times;</span>
-                       <span class="sr-only">Close</span>
-                </button>
-            </div>
-            
-            <!-- Modal Body -->
-            <div class="modal-body">
-                  <div class="form-group">
-					  <label for="comment">Comment:</label>
-					  <input type="hidden" id="threaCode" th:value="${threadCode}"/>
-					  <input type="hidden" id="commentCode" />
-					  <textarea class="form-control" rows="5" id="comment"></textarea>
-					</div>
-                  <button id="btnSave" class="btn btn-default">Submit</button>
+    <!-- Modal -->
+    <div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                </div>
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="comment">Comment:</label>
+                        <input type="hidden" id="threaCode" th:value="${threadCode}" />
+                        <input type="hidden" id="commentCode" />
+                        <textarea class="form-control" rows="5" id="comment"></textarea>
+                    </div>
+                    <button id="btnSave" class="btn btn-default">Submit</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-
-
-
-		<div class="row">
-			<div class="col-md-12">
-				<p class="lead" th:text="${title}"></p>
-				<p th:text="${description}"></p>
-			</div>
-		</div>
-
-
-
-
-
-		<!-- Datatable end -->
- 	<span th:substituteby="commons :: common-html"></span>
- 	
- 	<button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModalHorizontal"><i class="glyphicon glyphicon-comment"></i> Post Comment</button>
-
-	<table id="customerDataTable" class="table" style="display:none">
+    <div class="row">
+        <div class="col-md-12">
+            <p class="lead" th:text="${title}"></p>
+            <p th:text="${description}"></p>
+        </div>
+    </div>
+    <!-- Datatable end -->
+    <span th:substituteby="commons :: common-html"></span>
+    <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModalHorizontal"><i class="glyphicon glyphicon-comment"></i> Post Comment</button>
+    <table id="customerDataTable" class="table" style="display:none">
         <thead>
             <tr>
                 <th></th>
@@ -84,10 +72,10 @@
             </tr>
         </thead>
         <tbody id="tblcustomerlist"></tbody>
-    </table> <!-- Datatable end -->
-  
-</div> <!-- container end -->
-
+    </table>
+    <!-- Datatable end -->
+</div>
+<!-- container end -->
 <span th:substituteby="commons :: common-js"></span>
 </body>
 
@@ -102,13 +90,6 @@ $( document ).ready(function() {
 	 *###############################################*/
 	 load(baseUrl+"/all");
 	
-	
-	 /*###############################################
-	  *##### For Load all autocomplete from server ###
-	  *###############################################*/
-	 
-	 
-	
 	 /*###############################################
 	  *########## For Searching data on header box ###
 	  *###############################################*/
@@ -117,17 +98,10 @@ $( document ).ready(function() {
 	      oTable.search($(this).val()).draw() ;
 	})
 	
-	function myFunction() {
-    alert("working");
-}
 	 /*###############################################
 	  *########## Save button click event          ###
 	  *###############################################*/
 		$("#btnSave").click(function() {
-			
-			/* validation checking */
-			
-			/* Json Object */
 			var jsonObj = {
 					threadCode : $("#threadCode").val(),
 					commentCode : $("#commentCode").val(),
@@ -175,10 +149,6 @@ $( document ).ready(function() {
 
 		});
 
-	 /*###############################################
-	  *######### DataTable click event End ###########
-	  *###############################################*/
-		  
 	/*##### All Functions ######*/	  
 		function load(param) {
 			$("#tblcustomerlist").html("");
@@ -241,7 +211,6 @@ $( document ).ready(function() {
 	           });
 		}
 		
-		
 		$('#customerDataTable tbody').on( 'click', 'button', function () {
 			var table = $('#customerDataTable').DataTable();
 			var data = table.row( $(this).parents('tr') ).data();
@@ -252,10 +221,7 @@ $( document ).ready(function() {
 		        $("#myModalHorizontal").modal();
 	    } );
 		
-		
-		
-
 	});
 </script>
-
+<script src="../../js/comment.js"></script>
 </html>
