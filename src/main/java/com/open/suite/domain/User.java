@@ -18,7 +18,12 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Transient;
-
+/**
+ * @author    Minhajul Sarkar<polash.pbt@gmail.com>
+ * @version   1.0.00
+ * @since     1.0.00
+ * 
+ */
 @Entity
 @Table(name = "user")
 public class User implements Serializable {

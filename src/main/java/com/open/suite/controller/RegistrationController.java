@@ -12,6 +12,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.open.suite.domain.User;
 import com.open.suite.service.UserService;
 
+/**
+ * @author    Minhajul Sarkar<polash.pbt@gmail.com>
+ * @version   1.0.00
+ * @since     1.0.00
+ * 
+ */
 @Controller
 public class RegistrationController {
 	

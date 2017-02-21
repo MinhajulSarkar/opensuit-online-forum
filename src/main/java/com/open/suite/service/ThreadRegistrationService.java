@@ -8,7 +8,12 @@ import org.springframework.transaction.annotation.Transactional;
 import com.open.suite.domain.ThreadRegistration;
 import com.open.suite.repository.ThreadRegistrationRepository;
 
-
+/**
+ * @author    Minhajul Sarkar<polash.pbt@gmail.com>
+ * @version   1.0.00
+ * @since     1.0.00
+ * 
+ */
 @Service
 public class ThreadRegistrationService {
 

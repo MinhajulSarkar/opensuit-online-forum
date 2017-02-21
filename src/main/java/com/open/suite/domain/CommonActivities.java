@@ -5,6 +5,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
+/**
+ * @author    Minhajul Sarkar<polash.pbt@gmail.com>
+ * @version   1.0.00
+ * @since     1.0.00
+ * 
+ */
 
 @MappedSuperclass
 public abstract class CommonActivities implements Serializable {

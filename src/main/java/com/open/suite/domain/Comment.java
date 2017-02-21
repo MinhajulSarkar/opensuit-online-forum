@@ -7,6 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+/**
+ * @author    Minhajul Sarkar<polash.pbt@gmail.com>
+ * @version   1.0.00
+ * @since     1.0.00
+ * 
+ */
 
 @Entity
 @Table(name = "t_comments")
@@ -24,8 +30,8 @@ public class Comment extends CommonActivities implements Serializable {
 	@Transient
 	private String threadTitle;
 	
-	@Column(name = "t_usre_id")
-	private Integer userId;
+	@Column(name = "t_usre_email")
+	private String userEmail;
 	
 	@Column(name = "t_comment_text")
 	private String commentText;
@@ -46,12 +52,12 @@ public class Comment extends CommonActivities implements Serializable {
 		this.threadTitle = threadTitle;
 	}
 
-	public Integer getUserId() {
-		return userId;
+	public String getUserEmail() {
+		return userEmail;
 	}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
 	}
 
 	public String getCommentCode() {

@@ -8,7 +8,12 @@ import org.springframework.stereotype.Repository;
 
 import com.open.suite.domain.Topic;
 
-
+/**
+ * @author    Minhajul Sarkar<polash.pbt@gmail.com>
+ * @version   1.0.00
+ * @since     1.0.00
+ * 
+ */
 @Repository
 public interface TopicRepository extends CrudRepository<Topic, Long>{
 

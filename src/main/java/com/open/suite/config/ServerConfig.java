@@ -12,6 +12,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
+/**
+ * @author    Minhajul Sarkar<polash.pbt@gmail.com>
+ * @version   1.0.00
+ * @since     1.0.00
+ * 
+ */
+
 
 @Configuration
 @ComponentScan(basePackages= {"com.open.suite.component", "com.open.suite.controller.customer", "com.open.suite.controller", "com.open.suite.controller.customer", "com.open.suite.controller.query", "com.open.suite.controller.report","com.open.suite.controller.setup","com.open.suite.controller.transaction"})

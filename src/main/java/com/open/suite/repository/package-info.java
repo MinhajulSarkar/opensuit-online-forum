@@ -1,8 +1,7 @@
 /**
+ * @author    Minhajul Sarkar<polash.pbt@gmail.com>
+ * @version   1.0.00
+ * @since     1.0.00
  * 
- */
-/**
- * @author JAVA
- *
  */
 package com.open.suite.repository;

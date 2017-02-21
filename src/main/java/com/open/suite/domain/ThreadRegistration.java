@@ -6,7 +6,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
+/**
+ * @author    Minhajul Sarkar<polash.pbt@gmail.com>
+ * @version   1.0.00
+ * @since     1.0.00
+ * 
+ */
 @Entity
 @Table(name = "t_thread_registration")
 public class ThreadRegistration extends CommonActivities implements Serializable {
@@ -17,8 +22,8 @@ public class ThreadRegistration extends CommonActivities implements Serializable
 	@Column(name = "t_thread_code")
 	private String threadCode;
 	
-	@Column(name = "t_usre_id")
-	private Integer userId;
+	@Column(name = "t_usre_email")
+	private String userEmail;
 	
 	@Column(name = "t_thread_tile")
 	private String threadTitle;
@@ -37,12 +42,12 @@ public class ThreadRegistration extends CommonActivities implements Serializable
 		this.threadCode = threadCode;
 	}
 
-	public Integer getUserId() {
-		return userId;
+	public String getUserEmail() {
+		return userEmail;
 	}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
 	}
 
 	public Integer getTopicId() {

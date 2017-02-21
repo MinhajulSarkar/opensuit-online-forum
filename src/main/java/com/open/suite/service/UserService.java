@@ -11,7 +11,12 @@ import com.open.suite.domain.Role;
 import com.open.suite.domain.User;
 import com.open.suite.repository.RoleRepository;
 import com.open.suite.repository.UserRepository;
-
+/**
+ * @author    Minhajul Sarkar<polash.pbt@gmail.com>
+ * @version   1.0.00
+ * @since     1.0.00
+ * 
+ */
 @Service
 public class UserService{
 
