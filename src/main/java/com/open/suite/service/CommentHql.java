@@ -39,7 +39,7 @@ public class CommentHql {
 				+ "co.t_update_date "
 				+ "from t_thread_registration th "
 				+ "left outer join t_comments co on co.t_thread_code=th.t_thread_code "
-				+ "left outer join t_user_registration u on co.t_usre_email=u.t_usre_email "
+				+ "left outer join user u on co.t_usre_email=u.email "
 				+ "where th.t_thread_code="+searchValue;
 		Query qurey=session.createSQLQuery(sql);
 		ArrayList<Comment> threadList=new ArrayList<Comment>();
@@ -54,8 +54,6 @@ public class CommentHql {
 			String contributor= (String) objects[5];
 			Date entryDate= (Date) objects[6];
 			Date updateDate= (Date) objects[7];
-			
-			
 			Comment comment=new Comment();
 			comment.setThreadCode(threadCode);
 			comment.setThreadTitle(threadTitle);
@@ -66,7 +64,6 @@ public class CommentHql {
 			comment.setEntryDate((updateDate==null)?entryDate:updateDate);
 			threadList.add(comment);
 		}
-		
 		return threadList;
 	}
 	

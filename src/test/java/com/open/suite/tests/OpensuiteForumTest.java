@@ -14,7 +14,7 @@ import com.open.suite.service.ThreadRegistrationHql;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
-public class CustomerTest {
+public class OpensuiteForumTest {
 
 	@Autowired
 	private ThreadRegistrationHql service;
