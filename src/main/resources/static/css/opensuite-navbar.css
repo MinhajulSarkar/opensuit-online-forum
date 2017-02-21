@@ -1,0 +1,71 @@
+thead{
+	    background-color: #3a95d6;
+}
+  .navbar1-inner {
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #3a95d6;
+    background-image: -moz-linear-gradient(top, #0762a3, #3a95d6);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0762a3), to(#3a95d6));
+    /* background-image: -webkit-linear-gradient(top, #0762a3, #3a95d6); */
+    background-image: -o-linear-gradient(top, #0762a3, #3a95d6);
+    /* background-image: linear-gradient(to bottom, #0762a3, #3a95d6); */
+    background-repeat: repeat-x;
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ff0762a3', endColorstr='#ff3a95d6', GradientType=0);
+    /* border: 1px solid #2475ae; */
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 0px;
+    border:0px;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+    background-color: #4fa0da ! important;
+    color: #fff ! important;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #fff ! important;
+}
+
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+    background-color: #4fa0da;
+    color: #fff;
+    text-decoration: none;
+}
+
+.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
+    text-decoration: none;
+    color: #fff;
+    background-color: #3490d2;
+    background-image: -moz-linear-gradient(top, #3a95d6, #2a89cc);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3a95d6), to(#2a89cc));
+    background-image: -webkit-linear-gradient(top, #3a95d6, #2a89cc);
+    background-image: -o-linear-gradient(top, #3a95d6, #2a89cc);
+    background-image: linear-gradient(to bottom, #3a95d6, #2a89cc);
+    background-repeat: repeat-x;
+}
+
+span.brand{
+    line-height: 40px;
+        float: left;
+    display: block;
+    margin-left: 23px;
+    font-size: 20px;
+    font-weight: 200;
+    color: #fff;
+    text-shadow: 0 1px 0 #0762a3;
+}
+
+.form-control {
+    height: 28px;
+    /* padding: 6px 12px; */
+}
+
+tr.selected {
+    background-color: #3a95d6 ! important;
+	}
+	

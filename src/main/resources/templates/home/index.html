@@ -1,0 +1,239 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{forum.tile.level}"></title>
+     <meta charset="utf-8"/>
+  	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+  	<span th:substituteby="commons :: common-css"></span>
+</head>
+
+<body>
+<!-- ################## Header Start ############## -->
+<nav class="navbar navbar-default navbar1-inner">
+		  <div class="container-fluid">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+			    <div class="navbar-header">
+				      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				        <span class="sr-only">Toggle navigation</span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				      </button>
+				      <span class="brand" th:text="#{forum.tile.level}"></span>
+			    </div>
+			<span th:substituteby="commons :: common-header-event"></span>
+		</div><!-- /.container-fluid -->
+</nav>
+<!-- ################## Header End ############## -->
+	
+		
+<!-- ##################Content Body############## -->
+<div class="container">
+
+<!-- Modal -->
+<div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" 
+                   data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                </button>
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="modal-body">
+            	<div class="form-group">
+					  <label for="threadTitle">Thread Title:</label>
+					  <input type="text" class="form-control" id="threadTitle" />
+					   <input type="text" class="form-control" id="threadCode" />
+					</div>
+                  <div class="form-group">
+					  <label for="threadDescription">Description:</label>
+					  <textarea class="form-control" rows="5" id="threadDescription"></textarea>
+					</div>
+                  <button id="btnSave" class="btn btn-default">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModalHorizontal"><i class="glyphicon glyphicon-comment"></i> Post Thread</button>
+<!-- Datatable end -->
+ 	<span th:substituteby="commons :: common-html"></span>
+	<table id="customerDataTable" class="display nowrap" cellspacing="0" width="100%" style="display:none">
+        <thead>
+            <tr>
+                <th th:text="#{forum.post.level}"></th>
+                <th th:text="#{forum.thread.title.level}"></th>
+                <th th:text="#{forum.action.level}"></th>
+            </tr>
+        </thead>
+        <tbody id="tblcustomerlist"></tbody>
+    </table> <!-- Datatable end -->
+  
+</div> <!-- container end -->
+
+<span th:substituteby="commons :: common-js"></span>
+</body>
+
+
+<script th:inline="javascript">
+$( document ).ready(function() {
+	
+	var baseUrl="/online/forum";
+	
+	/*###############################################
+	 *############  For Load all data from server ###
+	 *###############################################*/
+	 load(baseUrl+"/all");
+	
+	
+	 /*###############################################
+	  *##### For Load all autocomplete from server ###
+	  *###############################################*/
+	 
+	 
+	
+	 /*###############################################
+	  *########## For Searching data on header box ###
+	  *###############################################*/
+	var oTable =$('#customerDataTable').DataTable();
+	$('#myInputTextField').keyup(function(){
+	      oTable.search($(this).val()).draw() ;
+	})
+	
+	
+	 /*###############################################
+	  *########## Save button click event          ###
+	  *###############################################*/
+	  $("#btnSave").click(function() {
+			
+			/* validation checking */
+			
+			/* Json Object */
+			var jsonObj = {
+					topicId : $("#topicId").val(),
+					threadTitle : $("#threadTitle").val(),
+					threadCode : $("#threadCode").val(),
+					threadDescription : $("#threadDescription").val()
+			};
+			var url, data, message;
+			if ($(this).attr("title") === "Update") {
+				save(jsonObj, baseUrl+"/update");
+				load(baseUrl+"/all");
+				oTable = $('#customerDataTable').DataTable();
+				$("#threadDescription").val("");
+				$("#threadCode").val("");
+				$("#threadTitle").val("");
+				$("#myModalHorizontal").modal('hide');
+				
+			} else {
+				save(jsonObj, baseUrl);
+				load(baseUrl+"/all");
+				oTable = $('#customerDataTable').DataTable();
+				$("#comment").val("");
+				$("#myModalHorizontal").modal('hide');
+				window.swal({
+			        title: message.message,
+			        type: "success",
+			        showCancelButton: false,
+			        confirmButtonClass: 'btn-primary',
+			        confirmButtonText: 'OK'
+			    });
+			}
+		});
+
+	 /*###############################################
+	  *########## Delete button click event        ###
+	  *###############################################*/
+		$("#btnDelete").click(function() {
+			var msg = deleteRecords();
+			window.swal({
+		        title: msg.message,
+		        type: "success",
+		        showCancelButton: false,
+		        confirmButtonClass: 'btn-primary',
+		        confirmButtonText: 'OK'
+		    });
+			reset();
+			load(baseUrl+"/all");
+			oTable = $('#customerDataTable').DataTable();
+
+		});
+
+	 /*###############################################
+	  *######### DataTable click event End ###########
+	  *###############################################*/
+		  
+	/*##### All Functions ######*/	  
+	function load(param) {
+			$("#tblcustomerlist").html("");
+			var siteCode = "ddd";
+			var url = param;
+			var data = sendAjax('{}', url, "GET", "", "");
+			$("#block-ui").hide();
+			$("#customerDataTable").show();
+			console.log(data);
+			$("#customerDataTable" + ' tbody' + ' tr').remove();
+			$("#customerDataTable").dataTable().fnDestroy();
+			$('#customerDataTable').dataTable({
+	               "aaData": data,
+	               "aoColumns": [
+	                   { "mDataProp": "entryUser","width": "10%", "bSortable": true, 
+	                	   "render": function (nRow, aData, iDataIndex) {
+	  						 var date = new Date(iDataIndex.entryDate);
+	  					        var month = date.getMonth() + 1;
+	  					        var dataa= (month.length > 1 ? month : "0" + month) + "/" + date.getDate() + "/" + date.getFullYear() +" "+ date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
+	  				        return '<span style="color:blue;font-weight:bold">'+iDataIndex.entryUser+'</span><br/><span>'+dataa+'</span>'
+	  				    }   
+	                   },
+					   { "mDataProp": "threadTitle", "bSortable": true},
+	                   { "mDataProp": "threadCode", "bSortable": true,"width": "10%",
+	                	   "render": function (nRow, aData, iDataIndex) {
+	                		   var edit;
+	                		   var deleteData;
+	                		   var user=[[${#httpServletRequest.remoteUser}]];
+	                		   console.log(user);
+	                		   if(user==null){
+	                			   edit='';
+	                			   deleteData='';
+	                		   }else{
+	                			   edit='<button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-edit"></span></button>';
+	                			   deleteData='<a href="/online/forum/delete?threadCode='+iDataIndex.threadCode+'" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-trash"></span></a>';
+	                		   }
+						        var html='<a href="/online/forum/comment?threadCode='+iDataIndex.threadCode+'" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-comment"></span>Comment</a>'
+						        		+edit
+						       			+deleteData;
+						        return html;
+						    }   
+	                   }
+	               ],
+					rowReorder : {
+						selector : 'td:nth-child(2)'
+					},
+					responsive : true
+	           });
+		}
+	
+		
+		$('#customerDataTable tbody').on( 'click', 'button', function () {
+			var table = $('#customerDataTable').DataTable();
+			var data = table.row( $(this).parents('tr') ).data();
+			$('#threadCode').val(data.threadCode);
+			$('#threadTitle').val(data.threadTitle);
+			$('#threadDescription').val(data.threadDescription);
+			$('#btnSave').prop('title', 'Update');
+		        $("#myModalHorizontal").modal();
+	    } );
+		
+		
+		
+
+	});
+</script>
+
+</html>

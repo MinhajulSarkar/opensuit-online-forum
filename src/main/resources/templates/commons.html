@@ -1,0 +1,90 @@
+<div xmlns:th="http://www.thymeleaf.org">
+	<span th:remove="tag" th:fragment="common-css" xmlns:th="http://www.thymeleaf.org">
+		<link rel="stylesheet" href="../../vendors/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/opensuite-navbar.css" />
+		<link rel="stylesheet" href="../../vendors/css/sweetalert-1.0.1.css"/>
+		
+		<link rel="stylesheet" href="../../vendors/css/jquery.dataTables.min.css"/>
+		<link rel="stylesheet" href="../../vendors/css/rowReorder.dataTables.min.css"/>
+		<link rel="stylesheet" href="../../vendors/css/responsive.dataTables.min.css"/>
+		
+		<link rel="stylesheet" href="../../vendors/css/font-awesome.min.css"/>
+		<link rel="stylesheet" href="../../vendors/css/jquery-ui.css"/>
+		<link rel="stylesheet" type="text/css" />
+		
+		<!-- for Jqurey Validation Engine -->
+	<link href="../../vendors/css/validationEngine.jquery.css" rel="stylesheet" type="text/css" />
+	
+	</span>
+
+	<span th:remove="tag" th:fragment="common-js" xmlns:th="http://www.thymeleaf.org">
+		<script src="../../vendors/js/jquery.min.js"></script>
+	  	<script src="../../vendors/js/bootstrap.min.js"></script>
+	  	
+	 	<script type="text/javascript" src="../../vendors/js/jquery.dataTables.js"></script>
+	 	<script type="text/javascript" src="../../vendors/js/dataTables.rowReorder.min.js"></script>
+	 	<script type="text/javascript" src="../../vendors/js/dataTables.responsive.min.js"></script>
+	 	<script type="text/javascript" src="../../js/commons.js"></script>
+	 	<script src="../../vendors/js/sweetalert-1.0.1.js"></script>
+	 	
+	 	<!-- for Jqurey Validation Engine -->
+	<script src="../../vendors/js/jquery.validationEngine.js"></script>
+	<script src="../../vendors/js/jquery.validationEngine-en.js"></script>
+	
+	<script src="../../vendors/js/jquery-ui.js"></script>
+	
+	</span>
+
+	<div th:remove="tag" th:fragment="common-html">
+		<input type="hidden" id="baseurl" th:value="@{'/'}"></input>
+		<div class="modal nodisplay" id="modalcontainer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="true">
+			<div class="modal-body"></div>
+		</div>
+		<div id="block-ui" style="z-index: 2055;display: flex;justify-content: center;align-items: center;">
+			<div class="updateProgress"><img th:src="@{/img/ajax-loading.gif}" /></div>
+			<div class="updateBackground"></div>
+		</div>
+	</div>
+	<div th:remove="tag" th:fragment="common-btn-event">
+		<div id="block-btn-event" class="col-md-1">
+			<img th:src="@{/img/ajax-loading.gif}" />
+		</div>
+	</div>
+	
+	
+	<!-- Header fragment -->
+	
+	<div th:remove="tag" th:fragment="common-header-event">
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      <ul class="nav navbar-nav navbar-right">
+		      <li class="dropdown">
+		          <a href="/online/forum">Threads</a>
+		        </li>
+		        <li class="dropdown">
+		          <a href="/online/forum/registration">Registration</a>
+		        </li>
+		        
+		        
+		        <li class="dropdown" th:if="${#httpServletRequest.remoteUser} ==null">
+		          <a href="/online/forum/login">Login</a>
+		        </li>
+		        
+		       
+		        <li class="dropdown" th:if="${#httpServletRequest.remoteUser} !=null">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span th:if="${#httpServletRequest.remoteUser} !=null"><span th:text="${#httpServletRequest.remoteUser}"></span></span><span class="caret"></span></a>
+		          <ul class="dropdown-menu">
+		            <li><a href="/online/forum/logout">Logout</a></li>
+		          </ul>
+		        </li>
+		      </ul>
+		      <form class="navbar-form navbar-right">
+		        <div class="form-group">
+		          <input id="myInputTextField" type="text" class="form-control" th:placeholder="#{action.search}"/>
+		        </div>
+		      </form>
+		    </div><!-- /.navbar-collapse -->
+	</div>
+	
+	
+</div>
