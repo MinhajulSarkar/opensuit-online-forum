@@ -32,7 +32,6 @@ import com.open.suite.util.DateUtil;
 @Controller
 @RequestMapping("/online/forum/comment")
 public class CommentController {
-
 	
 	@Autowired 
 	private CommentHql serviceHql;
@@ -57,7 +56,6 @@ public class CommentController {
 		return "comment/index";
 	}
 	
-	
 	@ResponseBody
 	@RequestMapping(method=RequestMethod.POST)
 	public HashMap<String, Object> save(@RequestBody Comment jsonObj) {
@@ -71,7 +69,8 @@ public class CommentController {
 			comment.setCommentText(jsonObj.getCommentText());
 			comment.setCommentCode(DateUtil.format(new Date(), DateUtil.CODE_DATE_FORMAT));
 			comment.setThreadCode(searchValue);
-			comment.setEntryUser("Minhaj");
+			comment.setUserEmail(user.getEmail());
+			comment.setEntryUser(user.getName());
 			comment.setEntryDate(new Date());
 			commentService.save(comment);
 			map.put("message", "success");
@@ -87,10 +86,8 @@ public class CommentController {
 		return map;
 	}
 	
-	
 	@RequestMapping(value="/delete", method=RequestMethod.GET)
 	public String delete(String commentCode) {
-
 		try {
 			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 			User user = userService.findUserByEmail(auth.getName());
@@ -104,8 +101,6 @@ public class CommentController {
 		}
 		return "redirect:/online/forum/comment?threadCode="+searchValue;
 	}
-	
-	
 	
 	@ResponseBody
 	@RequestMapping(value ="/all", method=RequestMethod.GET)

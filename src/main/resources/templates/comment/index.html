@@ -184,14 +184,14 @@ $( document ).ready(function() {
 					   },
 	                   { "mDataProp": "threadCode", "bSortable": true,"width": "10%",
 	                	   "render": function (nRow, aData, iDataIndex) {
-	                		   if(user==null || user!==iDataIndex.userEmail){
+	                		   if(iDataIndex.entryUser==null){
 	                			   return "";
 	                		   }
 	                		   var edit;
 	                		   var deleteData;
 	                		   var user=[[${#httpServletRequest.remoteUser}]];
 	                		   console.log(user);
-	                		   if(user==null){
+	                		   if(user==null || user!==iDataIndex.userEmail){
 	                			   edit='';
 	                			   deleteData='';
 	                		   }else{
